@@ -1,9 +1,18 @@
+from glob import glob
+from re import sub as re_sub
+from importlib import import_module
+
+FOLDER_PATH = "resources/"
+
 import falcon
-
-from resources.v1.message.index import MessageV1
-from resources.v2.message.index import MessageV2
-
 app = falcon.App()
 
-app.add_route('/api/v1/message', MessageV1())
-app.add_route('/api/v2/message', MessageV2())
+for module in glob(f"{FOLDER_PATH}**/*.py", recursive=True):
+    module_path = re_sub("(.py)$", "", module)
+    module = import_module(module_path.replace("/", "."))
+
+    resource = getattr(module, "resource_instance", None)
+    if resource:
+        route_path = "/" + re_sub(f"^{FOLDER_PATH}", "", re_sub("(/index)$", "", module_path))
+        app.add_route(route_path, resource)
+

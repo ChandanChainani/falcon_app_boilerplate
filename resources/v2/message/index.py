@@ -1,4 +1,4 @@
-class MessageV2:
+class Index:
 
     def on_get(self, req, res):
         """Handles GET requests"""
@@ -7,3 +7,5 @@ class MessageV2:
         }
 
         res.media = data
+
+resource_instance = Index()
