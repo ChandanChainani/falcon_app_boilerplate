@@ -7,8 +7,9 @@ FOLDER_PATH = "resources/"
 import falcon
 
 from middlewares.logging import Logging
+from middlewares.validation import Validation
 
-app = falcon.App(middleware=[Logging()])
+app = falcon.App(middleware=[Logging(), Validation()])
 
 for module in glob(f"{FOLDER_PATH}**/*.py", recursive=True):
     module_path = re_sub("(.py)$", "", module)
