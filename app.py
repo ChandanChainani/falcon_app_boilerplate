@@ -1,7 +1,7 @@
 import falcon
 
-from resources.message_v1 import MessageV1
-from resources.message_v2 import MessageV2
+from resources.message.v1 import MessageV1
+from resources.message.v2 import MessageV2
 
 app = falcon.App()
 
