@@ -1,4 +1,4 @@
-# falcon_boilerplate
+# falcon_app_boilerplate
 
 - Easy modularization and maintenance of code
 - Creation of route is done through folder structure and files within
