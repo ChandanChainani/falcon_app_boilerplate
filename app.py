@@ -5,7 +5,10 @@ from importlib import import_module
 FOLDER_PATH = "resources/"
 
 import falcon
-app = falcon.App()
+
+from middlewares.logging import Logging
+
+app = falcon.App(middleware=[Logging()])
 
 for module in glob(f"{FOLDER_PATH}**/*.py", recursive=True):
     module_path = re_sub("(.py)$", "", module)
