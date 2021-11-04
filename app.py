@@ -2,14 +2,18 @@ from glob import glob
 from re import sub as re_sub
 from importlib import import_module
 
-FOLDER_PATH = "resources/"
-
 import falcon
 
 from middlewares.logging import Logging
 from middlewares.validation import Validation
 
-app = falcon.App(middleware=[Logging(), Validation()])
+FOLDER_PATH = "resources/"
+MIDDLEWARES = [
+    Logging(),
+    Validation(),
+]
+
+app = falcon.App(middleware=MIDDLEWARES)
 
 for module in glob(f"{FOLDER_PATH}**/*.py", recursive=True):
     module_path = re_sub("(.py)$", "", module)
