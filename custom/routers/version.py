@@ -24,7 +24,7 @@ class Version(CompiledRouter):
                 self._converters, params)
 
         if node is not None:
-            method_name = req.method.lower() + "_" + params['version']
+            method_name = "{}_{}".format(params['version'], req.method.lower())
             _method = getattr(node.resource, method_name, None)
             if _method is None:
                 return None
