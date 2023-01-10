@@ -173,6 +173,7 @@ class Version(CompiledRouter):
             if _method is None:
                 return None
             node.method_map[req.method] = _method
+            req.context['method_name'] = method_name
             return node.resource, node.method_map, params, node.uri_template
         else:
             return None
