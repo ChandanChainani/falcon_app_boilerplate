@@ -174,6 +174,7 @@ class Version(CompiledRouter):
                 return None
             node.method_map[req.method] = _method
             req.context['method_name'] = method_name
+            req.context['version'] = params['version']
             return node.resource, node.method_map, params, node.uri_template
         else:
             return None
