@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 falcon = "*"
+celery = "*"
 
 [dev-packages]
 gunicorn = "*"
