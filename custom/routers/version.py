@@ -164,7 +164,10 @@ class Version(CompiledRouter):
         node = self._find(path, self._return_values, self._patterns,
                 self._converters, params)
 
-        if node is not None:
+        if node is None:
+            return None
+
+        if params.get("version") != None:
             method_name = "{}_{}".format(params['version'], req.method.lower())
 
             if node.options and node.options.get('suffix', None):
@@ -175,6 +178,5 @@ class Version(CompiledRouter):
             node.method_map[req.method] = _method
             req.context['method_name'] = method_name
             req.context['version'] = params['version']
-            return node.resource, node.method_map, params, node.uri_template
-        else:
-            return None
+
+        return node.resource, node.method_map, params, node.uri_template

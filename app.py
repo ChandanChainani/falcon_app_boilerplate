@@ -13,6 +13,12 @@ MIDDLEWARES = [
 
 version_router = VersionRouter()
 app = falcon.App(router=version_router, middleware=MIDDLEWARES)
+
+class PingHandler():
+    def on_get(self, req, res):
+        res.text = "pong"
+app.add_route('/ping', PingHandler())
+
 message = Message()
 app.add_route('/{version}/message', message)
 app.add_route('/{version}/message/{message_id}', message, options={
