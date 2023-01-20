@@ -7,4 +7,4 @@
   for eg. we can have version 1 for one resource and version 2
   for other resource
 - Logging and Validation middleware is added for generic use cases
-- Async Jobs using [`celery`](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+- Async Jobs using [`celery`](https://docs.celeryq.dev/en/stable/getting-started/introduction.html) with scheduling support
